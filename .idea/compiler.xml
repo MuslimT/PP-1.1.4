@@ -7,7 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="TaskJDBC" />
+        <module name="PP_1_1_4-4_JDBC_Hibernate" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="17" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="PP_1_1_4-4_JDBC_Hibernate" options="" />
+    </option>
   </component>
 </project>
