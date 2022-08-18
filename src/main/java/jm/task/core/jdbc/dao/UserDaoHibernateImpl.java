@@ -29,7 +29,10 @@ public class UserDaoHibernateImpl implements UserDao {
                         .executeUpdate();
                 session.getTransaction().commit();
             } catch (Exception e){
-                e.printStackTrace();
+                if(session.getTransaction() != null) {
+                    session.getTransaction().rollback();
+                }
+            e.printStackTrace();
             }
         }
     }
@@ -42,6 +45,9 @@ public class UserDaoHibernateImpl implements UserDao {
                 session.createSQLQuery("DROP TABLE IF EXISTS users").executeUpdate();
                 session.getTransaction().commit();
             } catch (Exception e){
+                if(session.getTransaction() != null) {
+                    session.getTransaction().rollback();
+                }
                 e.printStackTrace();
             }
         }
@@ -57,6 +63,9 @@ public class UserDaoHibernateImpl implements UserDao {
                 System.out.println(user.getName() + " was added in DataBase.");
                 session.getTransaction().commit();
             } catch (Exception e){
+                if(session.getTransaction() != null) {
+                    session.getTransaction().rollback();
+                }
                 e.printStackTrace();
             }
         }
@@ -71,6 +80,9 @@ public class UserDaoHibernateImpl implements UserDao {
                 session.remove(user);
                 session.getTransaction().commit();
             } catch (Exception e){
+                if(session.getTransaction() != null) {
+                    session.getTransaction().rollback();
+                }
                 e.printStackTrace();
             }
         }
@@ -85,6 +97,9 @@ public class UserDaoHibernateImpl implements UserDao {
                 list = session.createQuery("select i from User i").getResultList();
                 session.getTransaction().commit();
             } catch (Exception e){
+                if(session.getTransaction() != null) {
+                    session.getTransaction().rollback();
+                }
                 e.printStackTrace();
             }
         }
@@ -99,6 +114,9 @@ public class UserDaoHibernateImpl implements UserDao {
                 session.createQuery("delete User").executeUpdate();
                 session.getTransaction().commit();
             } catch (Exception e){
+                if(session.getTransaction() != null) {
+                    session.getTransaction().rollback();
+                }
                 e.printStackTrace();
             }
         }
