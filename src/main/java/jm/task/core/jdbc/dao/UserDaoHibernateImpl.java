@@ -29,9 +29,6 @@ public class UserDaoHibernateImpl implements UserDao {
                         .executeUpdate();
                 session.getTransaction().commit();
             } catch (Exception e){
-                if(session.getTransaction() != null) {
-                    session.getTransaction().rollback();
-                }
             e.printStackTrace();
             }
         }
@@ -45,9 +42,6 @@ public class UserDaoHibernateImpl implements UserDao {
                 session.createSQLQuery("DROP TABLE IF EXISTS users").executeUpdate();
                 session.getTransaction().commit();
             } catch (Exception e){
-                if(session.getTransaction() != null) {
-                    session.getTransaction().rollback();
-                }
                 e.printStackTrace();
             }
         }
